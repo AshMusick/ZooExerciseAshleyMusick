@@ -1,0 +1,42 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FDFEFF;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    margin: 5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+fieldset {
+    width: 100%;
+    background: #F8F8F8;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    padding: 20;
+}
+
+#parsedUrlFieldset {
+    display: flex;
+    gap: 5px;
+}
+
+input {
+    padding: 10px 25px 10px 12px;
+    border: 1px solid #DDD;
+    border-radius: 2px;
+}
+
+.fa-up-down-left-right {
+    color: rgba(0,0,0,.3);
+    cursor: pointer;
+}
+
+.fa-up-down-left-right:hover {
+    color: rgba(0,0,0,.5);
+}
