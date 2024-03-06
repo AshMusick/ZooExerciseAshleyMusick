@@ -4,7 +4,6 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'src'), {
     setHeaders: (res, filePath) => {
-        console.log(filePath)
         if (path.extname(filePath) === '.js') {
             res.setHeader('Content-Type', 'application/javascript');
         }

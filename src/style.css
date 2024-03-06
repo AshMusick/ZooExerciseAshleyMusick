@@ -1,42 +1,146 @@
-/* style.css */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #FDFEFF;
+body, html {
     margin: 0;
     padding: 0;
+    height: 100%;
+    font-family: 'Open sans', HelveticaNeue-Light, 'Lucida Grande', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
 }
 
-form {
-    margin: 5%;
+.container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    height: 100%;
 }
 
-fieldset {
-    width: 100%;
-    background: #F8F8F8;
-    border: 1px solid #DDD;
-    border-radius: 5px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.1);
-    padding: 20;
+.left-menu {
+    width: 200px; /* Fixed width for left menu */
+    position: fixed;
+    height: 100%;
+    background-color: #f8f8f8;
+    color: #444;
+    padding: 20px;
+    overflow: scroll;
 }
 
-#parsedUrlFieldset {
+.left-menu h4 {
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 600;
+    font-size: 85%;
+}
+
+.left-menu ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 50px;
+}
+
+.left-menu ul li {
+    margin-bottom: 5px;
+}
+
+.left-menu .menu-link {
+    color: #444;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    background-color: inherit;
+    margin-left: 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 150px;
+    padding: 10px;
+    text-align: start;
+    display: block;
+}
+
+.left-menu .menu-link.selected {
+    background: #35a3d8;
+    pointer-events: none;
+}
+
+
+.navbar {
+    background-color: #2675a0;
+    color: #fff;
+    padding: 20px;
+    margin-left: 240px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar-link {
+    padding: 5px 20px;
+    border-radius: 50px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 90%;
+    letter-spacing: .04em;
+}
+
+.navbar-link.selected {
+    background: #005579;    
+}
+
+
+
+.content {
+    margin-left: 250px; /* Take remaining space */
+    padding: 20px;
+    background: (31,37,50,.9);
+    text-align: center;
+}
+
+.dynamic-content {
     display: flex;
-    gap: 5px;
+    justify-content: center;
 }
 
-input {
-    padding: 10px 25px 10px 12px;
-    border: 1px solid #DDD;
-    border-radius: 2px;
+.input-container {
+    position: relative;
+    display: inline-block; /* Make the container shrink-to-fit */
+}
+.explanation-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.fa-up-down-left-right {
-    color: rgba(0,0,0,.3);
+.explanation-text, #speakText {
+    margin: 20px;
+    padding: 10px;
+    font-size: 120%;
+    color: #AAA;
+    line-height: 1.5;
+}
+
+#speakText {
+    padding-right: 75px;
+}
+
+.send-button {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    padding: 12px;
+    font-size: 120%;
     cursor: pointer;
 }
 
-.fa-up-down-left-right:hover {
-    color: rgba(0,0,0,.5);
+pre {
+    text-align: left;
+}
+
+#speakTextContainer.hidden, #editButton.hidden {
+    display: none;
+}
+
+.fa-edit {
+    cursor: pointer;
 }

@@ -1,4 +1,6 @@
-import { ERROR_URL_FORMAT_MISMATCH, handleError } from "./errorHandler.js";
+export function isParsePath() {
+    return window.location.pathname.startsWith('/parse');
+}
 
 /**
  * Parses the URL format string and the URL instance to extract parameters.
@@ -8,13 +10,12 @@ import { ERROR_URL_FORMAT_MISMATCH, handleError } from "./errorHandler.js";
  * @returns {object} - An object containing the parsed parameters.
  */
 
-const parseUrlFormatAndInstance = (urlFormatString, urlInstance) => {
-    // TODO:: verify that urlFormatString and urlInstance are both valid independently
+export const parseUrlFormatAndInstance = (urlFormatString, urlInstance) => {
     const urlFormatParts = urlFormatString.split('/');
     const instanceParts = urlInstance.split('/');
 
     if(urlFormatParts.length !== instanceParts.length){
-        throw new Error(ERROR_URL_FORMAT_MISMATCH);
+        return { nomatch : true };
     }
     
     const searchParams = extractSearchParams(instanceParts);
@@ -34,10 +35,11 @@ const parseUrlFormatAndInstance = (urlFormatString, urlInstance) => {
  */
 
 const extractSearchParams = (instanceParts) => {
-    const lastInstancePart = instanceParts.slice(-1);
+    const length = instanceParts.length - 1;
+    const lastInstancePart = instanceParts[length];
     const questionMarkIndex = lastInstancePart.indexOf("?");
     if(questionMarkIndex !== -1){
-        instanceParts[instanceParts.length - 1] = lastInstancePart.substring(0, questionMarkIndex);
+        instanceParts[length] = lastInstancePart.substring(0, questionMarkIndex);
         return new URLSearchParams(lastInstancePart.substring(questionMarkIndex + 1));
     }
     return null;
@@ -49,16 +51,14 @@ const extractSearchParams = (instanceParts) => {
  * @param {string[]} urlFormatParts - An array containing parts of the URL format.
  * @param {string[]} instanceParts - An array containing parts of the URL instance.
  * @returns {Object} - A hash object with variables and their corresponding values.
- * @throws {Error} - If there is a mismatch between the URL format and the instance.
  */
 const populateHashWithVariables = (urlFormatParts, instanceParts) => {
     const hash = {};
     urlFormatParts.forEach((part, i) => {
         if(part[0] === ":"){
-            console.log(part + " is a variable");
             hash[part.slice(1)] = instanceParts[i];
         } else if (part !== instanceParts[i]) {
-            throw new Error(ERROR_URL_FORMAT_MISMATCH);
+            return { nomatch : true };
         }
     });
     return hash;
@@ -77,5 +77,3 @@ const addSearchParamsToHash = (searchParams, hash) => {
         }
     }
 }
-
-export default parseUrlFormatAndInstance;

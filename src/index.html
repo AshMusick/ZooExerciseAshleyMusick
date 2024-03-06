@@ -6,16 +6,52 @@
     <title>Zoo</title>
     <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/style.css">
+    <script type="module" src="/app.js"></script>
     <script src="https://kit.fontawesome.com/03f93a3513.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <a href="/fox/sound">Fox Sound</a>
-    <form>
-        <fieldset id="parsedUrlFieldset">
-            <label for="parsedUrl">Parsed Url</label>
-            <pre id="parsedUrl" >{}</pre>
-        </fieldset>
-    </form>    
-    <script type="module" src="/router.js"></script>
+    <div class="container">
+        <div class="left-menu">
+            <h4 class="menu-header">Animals</h4>
+            <ul>
+                <li><a id="dog-link" class="menu-link animal-link" >Dog</a></li>
+                <li><a id="horse-link" class="menu-link animal-link" >Horse</a></li>
+                <li><a id="hippo-link" class="menu-link animal-link" >Hippo</a></li>
+                <li><a id="lion-link" class="menu-link animal-link" >Lion</a></li>
+                <li><a id="tiger-link" class="menu-link animal-link" >Tiger</a></li>
+            </ul>
+            <h4 class="menu-header">Actions</h4>
+            <ul>
+                <li><a id="speak-link" class="menu-link action-link" >Speak</a></li>
+                <li><a id="eat-link" class="menu-link action-link" >Eat</a></li>
+                <li><a id="move-link" class="menu-link action-link" >Move</a></li>
+            </ul>
+            <h4 class="menu-header demo">Demo the URL Parser</h4>
+            <ul>
+                <li><a class="menu-link demo-link" href="/parse/zookeeper/fran/male/lion" >Zookeeper Fran</a></li>
+                <li><a class="menu-link demo-link" href="/parse/zookeeper/alice/female/hippo" >Zookeeper Alice</a></li>
+                <li><a class="menu-link demo-link" href="/parse/turkey/measurements?height=7&weight=80">Tall Turkey</a></li>
+                <li><a class="menu-link demo-link" href="/parse/turkey/tall/random" >Error</a></li>
+            </ul>
+        </div>
+        <div class="navbar">
+            <a class="navbar-link" id="zoo" href="/">Zoo</a>
+            <a class="navbar-link" id="parse" href="/parse/">Url Parser</a>
+        </div>
+        <div class="content">
+            <img id="animalImage" src="" alt="" height="300px"/>
+            <div class="dynamic-content">
+                <div id="speakTextContainer" class="input-container hidden">
+                    <input id="speakText" placeholder="What should I say?" type="text">
+                    <button id="sendButton" class="send-button">Send</button>
+                </div>
+                <div class="explanation-text-container">
+                    <p class="explanation-text" id="actionText"> </p>
+                    <i id="editButton" aria-role="button" class="fas fa-edit hidden"></i>
+                </div>
+                <pre id="parsedUrl" ></pre>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
