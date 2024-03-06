@@ -15,24 +15,32 @@ export function renderContentForPath() {
         const error = true;
         inviteUserInput(error);
     } else {
-        renderContent(data, isPathForParse);
+        renderMainContent(data, isPathForParse);
     }
+
+    renderNavbarContent(isPathForParse);
 }
 
-function renderContent(data, isParsePath) {
+function renderMainContent(data, isParsePath) {
     if(isParsePath) {
-        selectNavbarOption('parse');
         showData(data);
         hideAnimal();
         showGiraffNerd();
     } else {
-        selectNavbarOption('zoo');
         hideData();
         animalActs(data);
         showAnimal(data.animal);
     }
     selectAction(data.action);
     selectAnimal(data.animal);
+}
+
+function renderNavbarContent(isParsePath) {
+    if(isParsePath) {
+        selectNavbarOption('parse');
+    } else {
+        selectNavbarOption('zoo');
+    }
 }
 
 

@@ -2,7 +2,7 @@ import { isParsePath } from "../parse/parseService.js";
 
 const animalLinksArray = [...document.getElementsByClassName("animal-link")];
 const actionLinksArray = [...document.getElementsByClassName("action-link")];
-const navbarLinksArray = [...document.getElementsByClassName("action-link")];
+const navbarLinksArray = [...document.getElementsByClassName("navbar-link")];
 
 export function addMenuActionEventListeners() {
 
